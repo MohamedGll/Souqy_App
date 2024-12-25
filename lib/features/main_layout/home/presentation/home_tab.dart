@@ -1,9 +1,9 @@
 import 'dart:async';
 import 'package:ecommerce_app/core/api/api_manager.dart';
-import 'package:ecommerce_app/features/main_layout/categories/data/data_source/remote/category_remote_ds_impl.dart';
-import 'package:ecommerce_app/features/main_layout/categories/data/repository/category_repo_impl.dart';
-import 'package:ecommerce_app/features/main_layout/categories/domain/usecases/get_category_usecase.dart';
-import 'package:ecommerce_app/features/main_layout/categories/presentation/bloc/category_bloc.dart';
+import 'package:ecommerce_app/features/main_layout/home/data/data_source/remote/category_remote_ds_impl.dart';
+import 'package:ecommerce_app/features/main_layout/home/data/repository/category_repo_impl.dart';
+import 'package:ecommerce_app/features/main_layout/home/domain/usecases/get_category_usecase.dart';
+import 'package:ecommerce_app/features/main_layout/home/presentation/bloc/category_bloc.dart';
 import 'package:ecommerce_app/features/main_layout/home/presentation/widgets/custom_category_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
