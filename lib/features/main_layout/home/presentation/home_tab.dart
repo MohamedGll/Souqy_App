@@ -1,9 +1,6 @@
 import 'dart:async';
-import 'package:ecommerce_app/core/api/api_manager.dart';
-import 'package:ecommerce_app/features/main_layout/home/data/data_source/remote/category_remote_ds_impl.dart';
-import 'package:ecommerce_app/features/main_layout/home/data/repository/category_repo_impl.dart';
-import 'package:ecommerce_app/features/main_layout/home/domain/usecases/get_category_usecase.dart';
-import 'package:ecommerce_app/features/main_layout/home/presentation/bloc/category_bloc.dart';
+import 'package:ecommerce_app/di.dart';
+import 'package:ecommerce_app/features/main_layout/home/presentation/bloc/home_bloc.dart';
 import 'package:ecommerce_app/features/main_layout/home/presentation/widgets/custom_category_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -53,10 +50,8 @@ class _HomeTabState extends State<HomeTab> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => CategoryBloc(GetCategoryUsecase(
-          CategoryRepoImpl(CategoryRemoteDsImpl(ApiManager()))))
-        ..add(GetCategoryEvent()),
-      child: BlocConsumer<CategoryBloc, CategoryState>(
+      create: (context) => getIt<HomeBloc>()..add(GetHomeCategoryEvent()),
+      child: BlocConsumer<HomeBloc, HomeState>(
         listener: (context, state) {},
         builder: (context, state) {
           return SingleChildScrollView(

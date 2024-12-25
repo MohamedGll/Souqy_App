@@ -2,15 +2,17 @@ import 'package:bloc/bloc.dart';
 import 'package:ecommerce_app/core/utils/enum.dart';
 import 'package:ecommerce_app/features/main_layout/home/data/models/category_model.dart';
 import 'package:ecommerce_app/features/main_layout/home/domain/usecases/get_category_usecase.dart';
+import 'package:injectable/injectable.dart';
 
-part 'category_event.dart';
-part 'category_state.dart';
+part 'home_event.dart';
+part 'home_state.dart';
 
-class CategoryBloc extends Bloc<CategoryEvent, CategoryState> {
+@injectable
+class HomeBloc extends Bloc<HomeEvent, HomeState> {
   GetCategoryUsecase getCategoryUsecase;
 
-  CategoryBloc(this.getCategoryUsecase) : super(CategoryInitial()) {
-    on<CategoryEvent>((event, emit) async {
+  HomeBloc(this.getCategoryUsecase) : super(HomeInitial()) {
+    on<HomeEvent>((event, emit) async {
       emit(state.copyWith(
         requestState: RequestState.loading,
       ));

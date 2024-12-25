@@ -22,6 +22,7 @@ import 'features/main_layout/home/domain/repository/category_repo.dart'
     as _i288;
 import 'features/main_layout/home/domain/usecases/get_category_usecase.dart'
     as _i441;
+import 'features/main_layout/home/presentation/bloc/home_bloc.dart' as _i123;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -35,12 +36,13 @@ extension GetItInjectableX on _i174.GetIt {
       environmentFilter,
     );
     gh.lazySingleton<_i237.ApiManager>(() => _i237.ApiManager());
-    gh.factory<_i868.CategoryRemoteDs>(
-        () => _i93.CategoryRemoteDsImpl(gh<_i237.ApiManager>()));
+    gh.factory<_i868.CategoryRemoteDs>(() => _i93.CategoryRemoteDsImpl());
     gh.factory<_i288.CategoryRepo>(
         () => _i555.CategoryRepoImpl(gh<_i868.CategoryRemoteDs>()));
     gh.factory<_i441.GetCategoryUsecase>(
         () => _i441.GetCategoryUsecase(gh<_i288.CategoryRepo>()));
+    gh.factory<_i123.HomeBloc>(
+        () => _i123.HomeBloc(gh<_i441.GetCategoryUsecase>()));
     return this;
   }
 }
